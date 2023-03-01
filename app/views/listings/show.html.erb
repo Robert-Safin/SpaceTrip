@@ -1,13 +1,23 @@
-<div class="container">
+<div class="listing-container">
+  <div class="listing-title mt-4">
+    <h2><%= @listing.name  %></h2>
+  </div>
 
-  <%= cl_image_tag @listing.photo.key, height: 300, width: 400, crop: :fill  %>
-  <p><%= @listing.name  %></p>
-  <p><%= @listing.rating  %></p>
-  <p><%= @listing.description  %></p>
-  <p><%= @listing.price  %></p>
-  <p><%= @listing.depart_date  %></p>
-  <p><%= @listing.capacity  %></p>
-  <p><%= @listing.user.last_name  %></p>
+  <div class="listing-title-infos">
+      <p><i class="fas fa-star"></i> <%= @listing.rating  %></p>
+      <p><i class="fas fa-users"></i> <%= @listing.capacity  %></p>
+      <p><i class="fas fa-broom"></i> <%= @listing.depart_date  %></p>
+  </div>
+
+  <div class="listings-image">
+    <%= cl_image_tag @listing.photo.key, height: 300, width: 400, crop: :fill  %>
+  </div>
+
+  <div class="listing-description-card mt-4">
+    <p><i class="fas fa-info"></i>  <%= @listing.description  %></p>
+    <p><strong>$US <%= @listing.price  %></strong> trip</p>
+    <p><i class="fas fa-user"></i> <%= @listing.user.last_name  %></p>
+  </div>
 
 
   <% if current_user.id === @listing.user_id  %>
@@ -15,5 +25,7 @@
   <% end %>
 
   <%= link_to "Back to all listings", listings_path  %>
-  <%= link_to "Book now", listing_bookings_path(@listing), data: {turbo_method: :post, turbo_confirm: "Confirm booking?" }%>
+  <div class="button-red">
+   <%= link_to "Book now", listing_bookings_path(@listing), data: {turbo_method: :post, turbo_confirm: "Confirm booking?" }%>
+  </div>
 </div>

@@ -1,1 +1,13 @@
-<h1>Dashboard</h1>
+<div class="container">
+  <h1 class="dashboard-title">Dashboard</h1>
+
+    <% @bookings.each do |booking|  %>
+      <div class="booking-item">
+      <p>Booked by: <%= booking.user.first_name + " " + booking.user.last_name%></p>
+      <p>Trip Name: <%= booking.listing.name %></p>
+      <p>Hosted by: <%= booking.listing.user.first_name + " " +  booking.listing.user.last_name%></p>
+      <p>Status: <%= booking.status  %></p>
+      <p>Booked at: <%= booking.created_at  %></p>
+      </div>
+    <% end %>
+</div>
