@@ -27,7 +27,9 @@
               </div>
 
               <div class="card-details justifiy-content-start">
-                <p class="card-info space"><%=listing.depart_date.strftime("%B %d, %Y") %></p>
+                <p class="card-info space">
+                  <%= listing.depart_date.present? ? listing.depart_date.strftime("%B %d, %Y") : "Departure date not available" %>
+                </p>
                 <p class="card-info space"><%=listing.capacity%> people</p>
               </div>
 
